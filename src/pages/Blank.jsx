@@ -5,6 +5,18 @@ import Footer from "../components/Footer";
 import { Link } from 'react-router-dom'
 
 export default class Blank extends Component {
+  constructor(props){
+    super(props)
+    this.state ={
+      products: []
+    }
+  }
+  componentDidMount(){
+    fetch('http://localhost:5000/products')
+      .then(response => response.json())
+      .then(products => this.setState({ products: products }))
+      console.log(this.state.products)
+  }
   render() {
     return (
       <div>
