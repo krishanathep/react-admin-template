@@ -2,21 +2,9 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export default class Blank extends Component {
-  constructor(props){
-    super(props)
-    this.state ={
-      products: []
-    }
-  }
-  componentDidMount(){
-    fetch('http://localhost:5000/products')
-      .then(response => response.json())
-      .then(products => this.setState({ products: products }))
-      console.log(this.state.products)
-  }
   render() {
     return (
       <div>
@@ -41,32 +29,36 @@ export default class Blank extends Component {
             </div>
           </section>
           <section className="content">
-            <div className="card">
-              <div className="card-header">
-                <h3 className="card-title">Title</h3>
-                <div className="card-tools">
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="collapse"
-                    title="Collapse"
-                  >
-                    <i className="fas fa-minus" />
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-tool"
-                    data-card-widget="remove"
-                    title="Remove"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
+            <div className="row">
+              <div className="col-md-12">
+                <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title">Title</h3>
+                    <div className="card-tools">
+                      <button
+                        type="button"
+                        className="btn btn-tool"
+                        data-card-widget="collapse"
+                        title="Collapse"
+                      >
+                        <i className="fas fa-minus" />
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-tool"
+                        data-card-widget="remove"
+                        title="Remove"
+                      >
+                        <i className="fas fa-times" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="card-body">
+                    Start creating your amazing application!
+                  </div>
+                  <div className="card-footer">Footer</div>
                 </div>
               </div>
-              <div className="card-body">
-                Start creating your amazing application!
-              </div>
-              <div className="card-footer">Footer</div>
             </div>
           </section>
         </div>
@@ -75,4 +67,3 @@ export default class Blank extends Component {
     );
   }
 }
-

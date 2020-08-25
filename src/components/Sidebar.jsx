@@ -45,12 +45,45 @@ export default class Sidebar extends Component {
                     <p>Home</p>
                   </Link>
                 </li>
+                <li className="nav-item has-treeview">
+                  <Link to="#" className="nav-link">
+                    <i className="nav-icon fas fa-tools" />
+                    <p>
+                      REPAIR
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </Link>
+                  <ul className='nav nav-treeview'>
+                    <li className='nav-item'>
+                      <Link to='/repairs' className='nav-link'>
+                        <i class="far fa-circle nav-icon"></i>
+                        SHOW REPAIR
+                      </Link>
+                    </li>
+                  </ul>
+                  <ul className='nav nav-treeview'>
+                    <li className='nav-item'>
+                      <Link to='/create' className='nav-link'>
+                        <i class="far fa-circle nav-icon"></i>
+                        NEW REPAIR
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
                 <li className="nav-item">
                   <Link to="/blank" className="nav-link">
                     <i className="nav-icon fas fa-th" />
                     <p>
                       Blank
                       <span className="right badge badge-danger">New</span>
+                    </p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/boards/list" className="nav-link">
+                    <i className="nav-icon fas fa-comments"></i>
+                    <p>
+                      Boards
                     </p>
                   </Link>
                 </li>
