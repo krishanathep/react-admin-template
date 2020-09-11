@@ -35,7 +35,7 @@ export default class Show extends Component {
   }
 
   render() {
-    const { title, description, author } = this.state.board;
+    const { title, description, author, createdAt } = this.state.board;
     return (
       <div>
         <Navbar />
@@ -45,7 +45,7 @@ export default class Show extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Show</h1>
+                  <h1>SHOW BOARD</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -53,7 +53,7 @@ export default class Show extends Component {
                       <Link to="/">Home</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="/boards">Boards</Link>
+                      <Link to="/boards/list">Boards</Link>
                     </li>
                     <li className="breadcrumb-item active">Show</li>
                   </ol>
@@ -101,10 +101,14 @@ export default class Show extends Component {
                           <th>Author</th>
                           <td>{author}</td>
                         </tr>
+                        <tr>
+                          <th>CreatedAt</th>
+                          <td><Moment>{createdAt}</Moment></td>
+                        </tr>
                       </thead>
                     </table>
                     <div className="float-right">
-                      <Link to="/boards/list" className="btn btn-info mt-2">
+                      <Link to="/boards/list" className="btn btn-secondary mt-2">
                         Go Back
                       </Link>
                     </div>

@@ -25,6 +25,18 @@ export default class List extends Component {
       { key: "description", text: "Description" },
       { key: "author", text: "Author" },
       {
+        key: 'createdAt', text: 'Created At',
+        cell: (board)=>{
+          return (
+            <Fragment>
+              <Moment local>
+                {board.createdAt}
+              </Moment>
+            </Fragment>
+          )
+        }
+      },
+      {
         key: "actions",
         text: "Actions",
         cell: (board) => {
@@ -119,7 +131,7 @@ export default class List extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Boards</h1>
+                  <h1>BOARDS LIST</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -143,11 +155,13 @@ export default class List extends Component {
                     </div>
                   </div>
                   <div className="card-body">
+                  <div class="table-responsive">
                     <ReactDatatable
                       columns={this.columns}
                       records={this.state.boards}
                       config={this.config}
                     />
+                    </div>
                   </div>
                 </div>
               </div>

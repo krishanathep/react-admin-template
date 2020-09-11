@@ -13,6 +13,7 @@ export default class Edit extends Component {
       title: "",
       description: "",
       author: "",
+      createdAt: ''
     };
   }
 
@@ -29,6 +30,7 @@ export default class Edit extends Component {
           title: board.title,
           description: board.description,
           author: board.author,
+          createdAt: board.createdAt,
         });
       } else {
         console.log("No such document!");
@@ -45,7 +47,7 @@ export default class Edit extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, description, author } = this.state;
+    const { title, description, author, createdAt } = this.state;
 
     const updateRef = firebase
       .firestore()
@@ -56,12 +58,14 @@ export default class Edit extends Component {
         title,
         description,
         author,
+        createdAt,
       })
       .then((docRef) => {
         this.setState({
           key: "",
           title: "",
           description: "",
+          createdAt,
         });
         console.log(docRef)
         this.props.history.push("/boards/list");
@@ -72,7 +76,7 @@ export default class Edit extends Component {
   };
 
   render() {
-    const { title, description, author } = this.state;
+    const { title, description, author, createdAt } = this.state;
     return (
       <div>
         <Navbar />
@@ -82,7 +86,7 @@ export default class Edit extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Edit</h1>
+                  <h1>EDIT BOARD</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -90,7 +94,7 @@ export default class Edit extends Component {
                       <Link to="/">Home</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="/boards">Boards</Link>
+                      <Link to="/boards/list">Boards</Link>
                     </li>
                     <li className="breadcrumb-item active">Edit</li>
                   </ol>
@@ -156,6 +160,18 @@ export default class Edit extends Component {
                           value={author}
                           onChange={this.onChange}
                           placeholder="Enter your author"
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="">Created At :</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="createdAt"
+                          value={createdAt}
+                          onChange={this.onChange}
+                          placeholder="Enter your author"
+                          readOnly
                         />
                       </div>
                       <div className="form-group float-right">

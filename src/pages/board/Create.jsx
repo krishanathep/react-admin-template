@@ -29,13 +29,11 @@ export default class Create extends Component {
 
     const { title, description, author } = this.state;
 
-    const timestamp = firebase.firestore.Timestamp.fromDate(new Date())
-
     this.ref.add({
         title,
         description,
         author,
-        createdAt : timestamp
+        createdAt : Date()
     }).then((docRef)=>{
         this.setState({
             title: '',
@@ -62,7 +60,7 @@ export default class Create extends Component {
             <div className="container-fluid">
               <div className="row mb-2">
                 <div className="col-sm-6">
-                  <h1>Create</h1>
+                  <h1>CREATE BOARD</h1>
                 </div>
                 <div className="col-sm-6">
                   <ol className="breadcrumb float-sm-right">
@@ -70,7 +68,7 @@ export default class Create extends Component {
                       <Link to="/">Home</Link>
                     </li>
                     <li className="breadcrumb-item">
-                      <Link to="/boards">Boards</Link>
+                      <Link to="/boards/list">Boards</Link>
                     </li>
                     <li className="breadcrumb-item active">Create</li>
                   </ol>
