@@ -91,7 +91,7 @@ export default class Sidebar extends Component {
             </nav>
           </div>
         </aside>
-        <aside class="control-sidebar control-sidebar-dark"></aside>
+        <aside class="control-sidebar control-sidebar-light"></aside>
       </div>
     );
   }

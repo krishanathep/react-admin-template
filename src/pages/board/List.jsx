@@ -1,7 +1,4 @@
 import React, { Component, Fragment } from "react";
-import Navbar from "../../components/Navbar";
-import Sidebar from "../../components/Sidebar";
-import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import firebase from "../../database/firebase";
 import ReactDatatable from "@ashvin27/react-datatable";
@@ -124,8 +121,6 @@ export default class List extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Sidebar />
         <div className="content-wrapper">
           <section className="content-header">
             <div className="container-fluid">
@@ -168,7 +163,6 @@ export default class List extends Component {
             </div>
           </section>
         </div>
-        <Footer />
       </div>
     );
   }
