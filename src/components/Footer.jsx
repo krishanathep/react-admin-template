@@ -9,7 +9,7 @@ export default class Footer extends Component {
             <b>Version</b> 3.1.0-pre
           </div>
           <strong>
-            Copyright &copy; 2014-2020{" "}
+            Copyright &copy; 2014-2023{" "}
             <a href="https://adminlte.io">AdminLTE.io</a>.
           </strong>{" "}
           All rights reserved.

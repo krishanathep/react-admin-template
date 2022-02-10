@@ -45,6 +45,12 @@ export default class Sidebar extends Component {
                     <p>Home</p>
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/students" className="nav-link">
+                    <i className="nav-icon fas fa-users" />
+                    <p>Students</p>
+                  </Link>
+                </li>
                 <li className="nav-item has-treeview">
                   <Link to="#" className="nav-link">
                     <i className="nav-icon fas fa-tools" />

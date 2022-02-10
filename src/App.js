@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
+import StudentLlist from "./pages/students/StudnetList";
+
 import Home from './pages/Home'
 import Blank from "./pages/Blank";
 import Repairs from "./pages/Repairs";
@@ -25,6 +27,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/blank" element={<Blank />} />
+          <Route path="/students" element={<StudentLlist />} />
           <Route path="/repairs" element={<Repairs />} />
           <Route path="/create" element={<CreateNew />} />
           <Route path="/update" element={<UpdateRepair />} />
