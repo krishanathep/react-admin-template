@@ -1,10 +1,99 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
+import ReactDatatable from "@ashvin27/react-datatable";
+import Swal from "sweetalert2";
 
 export default function StudnetList() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const config = {
+    pagination: "advance",
+  };
+
+  const columns = [
+    {
+      key: "id",
+      text: "ID",
+    },
+    {
+      key: "name",
+      text: "Name",
+    },
+    {
+      key: "course",
+      text: "Course",
+    },
+    {
+      key: "email",
+      text: "Email",
+    },
+    {
+      key: "phone",
+      text: "Phone",
+    },
+    {
+      key: "actions",
+      text: "Actions",
+      cell: (students) => {
+        return (
+          <Fragment>
+            <Link to={"/student-view/" + students.id} className="btn btn-info">
+              <i class="fas fa-eye"></i>
+            </Link>{" "}
+            <Link
+              to={"/student-edit/" + students.id}
+              className="btn btn-primary"
+            >
+              <i class="fas fa-edit"></i>
+            </Link>{" "}
+            <button
+              onClick={(event) => deleteStudnet(event, students.id)}
+              className="btn btn-danger"
+            >
+              <i class="fas fa-trash"></i>
+            </button>
+          </Fragment>
+        );
+      },
+    },
+  ];
+
+  async function deleteStudnet(event, id) {
+    event.preventDefault();
+
+    await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `https://www.full-stack-app.com/services/public/api/delete-student/${id}`,
+          { method: "DELETE" }
+        )
+          .then((res) => res.json())
+          .then((res) => console.log(res.student));
+
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+          showConfirmButton: false,
+        });
+        setTimeout(function () {
+          window.location.reload();
+        }, 1500);
+      } else {
+        console.log(error);
+      }
+    });
+  }
 
   async function getData() {
     try {
@@ -25,17 +114,17 @@ export default function StudnetList() {
 
   if (loading === true) {
     return (
-    <div className="mt-5" align='center'>
+      <div className="mt-5" align="center">
         <h2>Loading...</h2>
-    </div>
+      </div>
     );
   }
 
   if (error) {
     return (
-        <div className="mt-5" align='center'>
-            <p>Server Errors!</p>
-        </div>
+      <div className="mt-5" align="center">
+        <p>Server Errors!</p>
+      </div>
     );
   }
 
@@ -64,7 +153,7 @@ export default function StudnetList() {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Title</h3>
+                  <h3 className="card-title">Student List</h3>
                   <div className="card-tools">
                     <button
                       type="button"
@@ -85,28 +174,19 @@ export default function StudnetList() {
                   </div>
                 </div>
                 <div className="card-body">
-                  <table id="example2" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Course</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     {students.map((student)=>(
-                          <tr key={student.id}>
-                          <td>{ student.id }</td>
-                          <td>{ student.name }</td>
-                          <td>{ student.course }</td>
-                          <td>{ student.email }</td>
-                          <td>{ student.phone }</td>
-                        </tr>
-                     ))}
-                    </tbody>
-                  </table>
+                  <Link
+                    to="/student-create"
+                    className="btn btn-success float-right"
+                  >
+                    + Student
+                  </Link>
+                  <div>
+                    <ReactDatatable
+                      columns={columns}
+                      records={students}
+                      config={config}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

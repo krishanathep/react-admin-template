@@ -4,8 +4,6 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
-import StudentLlist from "./pages/students/StudnetList";
-
 import Home from './pages/Home'
 import Blank from "./pages/Blank";
 import Repairs from "./pages/Repairs";
@@ -18,6 +16,11 @@ import Board from "./pages/board/List";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import StudentLlist from "./pages/students/StudnetList";
+import StudentCreate from "./pages/students/StudentCreate";
+import StudentEdit from "./pages/students/StudentEdit";
+import StudentView from "./pages/students/StudentView";
+
 function App() {
   return (
     <div className="wrapper">
@@ -27,7 +30,14 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/blank" element={<Blank />} />
+
+          {/* Students */}
           <Route path="/students" element={<StudentLlist />} />
+          <Route path="/student-create" element={<StudentCreate />} />
+          <Route path="/student-edit/:id" element={<StudentEdit />} />
+          <Route path="/student-view/:id" element={<StudentView />} />
+
+
           <Route path="/repairs" element={<Repairs />} />
           <Route path="/create" element={<CreateNew />} />
           <Route path="/update" element={<UpdateRepair />} />
