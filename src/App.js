@@ -21,6 +21,8 @@ import StudentCreate from "./pages/students/StudentCreate";
 import StudentEdit from "./pages/students/StudentEdit";
 import StudentView from "./pages/students/StudentView";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
     <div className="wrapper">

@@ -11,7 +11,7 @@ export default function StudentEdit() {
 
   const getData = async () => {
     await fetch(
-      "https://www.full-stack-app.com/services/public/api/edit-student/" + id
+      `https://www.full-stack-app.com/services/public/api/edit-student/${id}`
     )
       .then((res) => res.json())
       .then((res) => setEditStudent(res.student));
@@ -47,7 +47,7 @@ export default function StudentEdit() {
     };
 
     await fetch(
-      "https://www.full-stack-app.com/services/public/api/update-student/" + id,
+      `https://www.full-stack-app.com/services/public/api/update-student/${id}`,
       requestOptions
     )
       .then((res) => res.json())

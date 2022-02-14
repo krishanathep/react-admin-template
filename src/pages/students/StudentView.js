@@ -24,14 +24,14 @@ export default function StudentView() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1>Blank</h1>
+                <h1>Students</h1>
               </div>
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
                   <li className="breadcrumb-item">
                     <Link to="/">Home</Link>
                   </li>
-                  <li className="breadcrumb-item active">Blank</li>
+                  <li className="breadcrumb-item active">View</li>
                 </ol>
               </div>
             </div>
@@ -42,7 +42,7 @@ export default function StudentView() {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Title</h3>
+                  <h3 className="card-title">Student View</h3>
                   <div className="card-tools">
                     <button
                       type="button"
