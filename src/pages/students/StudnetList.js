@@ -18,8 +18,20 @@ export default function StudnetList() {
       text: "ID",
     },
     {
+      key:'image',
+      text: 'Image',
+      cell: (students) => {
+        return (
+        <Fragment>
+          <img src={students.image} class="rounded-circle" width={50} />
+        </Fragment>  
+        )
+      },
+    },
+    {
       key: "name",
       text: "Name",
+      align: "center",
     },
     {
       key: "course",

@@ -69,6 +69,10 @@ export default function StudentView() {
                       <td>{detail.id}</td>
                     </tr>
                     <tr>
+                      <td>Image</td>
+                      <td><img src={detail.image} class="img-thumbnail" width={150} / ></td>
+                    </tr>
+                    <tr>
                       <td>Name</td>
                       <td>{detail.name}</td>
                     </tr>
