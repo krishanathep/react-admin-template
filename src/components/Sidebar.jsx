@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 
 export default class Sidebar extends Component {
   render() {
@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
                 data-accordion="false"
               >
                 <li className="nav-item">
-                  <Link to="/" className="nav-link">
+                  <Link to="/"  className="nav-link">
                     <i className="nav-icon fas fa-home" />
                     <p>Home</p>
                   </Link>
@@ -51,8 +51,8 @@ export default class Sidebar extends Component {
                     <p>Students</p>
                   </Link>
                 </li>
-                <li className="nav-item has-treeview">
-                  <Link to="#" className="nav-link">
+                {/* <li className="nav-item has-treeview">
+                  <Link to="javascript:;" className="nav-link">
                     <i className="nav-icon fas fa-tools" />
                     <p>
                       REPAIR
@@ -75,7 +75,7 @@ export default class Sidebar extends Component {
                       </Link>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link to="/blank" className="nav-link">
                     <i className="nav-icon fas fa-th" />

@@ -21,18 +21,26 @@ import StudentCreate from "./pages/students/StudentCreate";
 import StudentEdit from "./pages/students/StudentEdit";
 import StudentView from "./pages/students/StudentView";
 
+import SignIn from './pages/login/SignIn'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
+  
   return (
     <div className="wrapper">
       <Router>
-        <Navbar />
+       
+           <Navbar />
+        
         <Sidebar />
+        
         <Routes>
+        
           <Route exact path="/" element={<Home />} />
           <Route path="/blank" element={<Blank />} />
-
+          <Route path="/signin" element={<SignIn />} />
+       
           {/* Students */}
           <Route path="/students" element={<StudentLlist />} />
           <Route path="/student-create" element={<StudentCreate />} />
