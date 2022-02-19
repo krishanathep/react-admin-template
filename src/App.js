@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 
-import Home from './pages/Home'
+import Home from "./pages/Home";
 import Blank from "./pages/Blank";
 import Repairs from "./pages/Repairs";
 import CreateNew from "./pages/CreateNew";
@@ -21,33 +21,23 @@ import StudentCreate from "./pages/students/StudentCreate";
 import StudentEdit from "./pages/students/StudentEdit";
 import StudentView from "./pages/students/StudentView";
 
-import SignIn from './pages/login/SignIn'
-
-import 'bootstrap/dist/css/bootstrap.min.css';
+import SignIn from "./pages/login/SignIn";
 
 function App() {
-  
   return (
     <div className="wrapper">
       <Router>
-       
-           <Navbar />
-        
-        <Sidebar />
-        
+        {window.location.pathname !== '/signin' && <Navbar/>}
+        {window.location.pathname !== '/signin' && <Sidebar/>}
         <Routes>
-        
+          
+          <Route path="/signin" element={<SignIn />} />
           <Route exact path="/" element={<Home />} />
           <Route path="/blank" element={<Blank />} />
-          <Route path="/signin" element={<SignIn />} />
-       
-          {/* Students */}
           <Route path="/students" element={<StudentLlist />} />
           <Route path="/student-create" element={<StudentCreate />} />
           <Route path="/student-edit/:id" element={<StudentEdit />} />
           <Route path="/student-view/:id" element={<StudentView />} />
-
-
           <Route path="/repairs" element={<Repairs />} />
           <Route path="/create" element={<CreateNew />} />
           <Route path="/update" element={<UpdateRepair />} />
@@ -56,7 +46,7 @@ function App() {
           <Route path="/boards/edit/:id" element={<Edit />} />
           <Route path="/boards/list" element={<Board />} />
         </Routes>
-        <Footer />
+        {window.location.pathname !== '/signin' && <Footer/>}
       </Router>
     </div>
   );
