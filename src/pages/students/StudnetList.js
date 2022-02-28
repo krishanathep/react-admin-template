@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 export default function StudnetList() {
   const [students, setStudents] = useState([]);
-  const [loading, setLoading] = useState(false);
+  //const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const config = {
@@ -18,14 +18,28 @@ export default function StudnetList() {
       text: "ID",
     },
     {
-      key:'image',
-      text: 'Image',
+      key: "image",
+      text: "Image",
       cell: (students) => {
         return (
-        <Fragment>
-          <img src={students.image} class="rounded-circle" width={50} />
-        </Fragment>  
-        )
+          <Fragment>
+            {(() => {
+              if (students.file === null) {
+                return (
+                  <img
+                    src="https://www.tyithailand.or.th/images/nopic.png"
+                    class="img-thumbnail"
+                    width={100}
+                  />
+                );
+              } else {
+                return (
+                  <img src={students.file} class="img-thumbnail" width={100} />
+                );
+              }
+            })()}
+          </Fragment>
+        );
       },
     },
     {
@@ -109,14 +123,14 @@ export default function StudnetList() {
 
   async function getData() {
     try {
-      setLoading(true);
+      //setLoading(true);
       await fetch("https://www.full-stack-app.com/services/public/api/students")
         .then((res) => res.json())
         .then((res) => setStudents(res.students));
     } catch (error) {
       setError(error);
     } finally {
-      setLoading(false);
+      //setLoading(false);
     }
   }
 
@@ -124,13 +138,12 @@ export default function StudnetList() {
     getData();
   }, []);
 
-  if (loading === true) {
-    return (
-      <div className="mt-5" align="center">
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
+  // if (loading === true) {
+  //   return (
+  //     <div className="loader" align='center' ng-hide="data.length > 0">
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (

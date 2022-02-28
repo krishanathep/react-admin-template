@@ -85,14 +85,14 @@ export default class Sidebar extends Component {
                     </p>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/boards/list" className="nav-link">
                     <i className="nav-icon fas fa-comments"></i>
                     <p>
                       Boards
                     </p>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>

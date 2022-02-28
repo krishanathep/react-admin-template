@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-//import { Image, Transformation } from "cloudinary-react";
 import Swal from "sweetalert2";
 
 export default function StudentCreate() {
@@ -10,33 +9,37 @@ export default function StudentCreate() {
   const [course, setCourse] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [image, setImage] = useState('')
-  const [file, setFile] = useState('')
+  const [file, setFile] = useState("");
 
- async function handleSubmit(event) {
-    event.preventDefault();
+  function handleUpload(event) {
+    const files = event.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "tutorial");
+    data.append("cloud_name", "fullstack-solurions");
 
-    const upload = new FormData()
-    upload.append("file", image)
-    upload.append("upload_preset", "tutorial")
-    upload.append("cloud_name", "fullstack-solurions")
-
-   await fetch('https://api.cloudinary.com/v1_1/fullstack-solurions/image/upload', {
+    fetch("https://api.cloudinary.com/v1_1/fullstack-solurions/image/upload", {
       method: "POST",
-      body: upload
+      body: data,
     })
-      .then(res => res.json())
-      .then(data=>{
-        setFile(data.url)
-      })
+      .then((res) => res.json())
+      .then((data) => {
+        setFile(data.url);
+      });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
 
     const data = {
       name,
       course,
       email,
       phone,
-      file
+      file,
     };
+
+    console.log(data);
 
     const resuestOptions = {
       method: "POST",
@@ -44,7 +47,7 @@ export default function StudentCreate() {
       body: JSON.stringify(data),
     };
 
-    fetch(
+    await fetch(
       "https://www.full-stack-app.com/services/public/api/add-student",
       resuestOptions
     )
@@ -70,10 +73,10 @@ export default function StudentCreate() {
             timer: 1500,
           });
 
-          setName("");
-          setCourse("");
-          setEmail("");
-          setPhone("");
+          // setName("");
+          // setCourse("");
+          // setEmail("");
+          // setPhone("");
         }
       });
   }
@@ -176,12 +179,21 @@ export default function StudentCreate() {
                       </div>
                       <div className="col-md-12">
                         <div className="form-group">
-                          <label htmlFor="imagge">Image</label><br/>
-                          <input 
-                          onChange={(event)=>setImage(event.target.files[0])}
-                          type="file" 
+                          <label htmlFor="image">Image</label>
+                          <br />
+                          <input
+                            className="form-control-file"
+                            onChange={handleUpload}
+                            type="file"
                           />
                         </div>
+                      </div>
+                      <div className="col-md-12">
+                      <img
+                            src={file}
+                            class="img-thumbnail"
+                            width={100}
+                          />
                       </div>
                       <div className="col-md-12">
                         <div className="form-group float-right">
