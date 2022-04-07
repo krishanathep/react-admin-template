@@ -40,15 +40,33 @@ export default class Sidebar extends Component {
                 data-accordion="false"
               >
                 <li className="nav-item">
-                  <Link to="/"  className="nav-link">
-                    <i className="nav-icon fas fa-home" />
+                  <Link to="/home"  className="nav-link">
+                    <i className="nav-icon fa fa-home" />
                     <p>Home</p>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/students" className="nav-link">
                     <i className="nav-icon fas fa-users" />
                     <p>Students</p>
+                  </Link>
+                </li> */}
+                <li className="nav-item">
+                  <Link to="/profiles/list" className="nav-link">
+                    <i className="nav-icon fa fa-address-card" />
+                    <p>Profiles</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/helpdesk/list" className="nav-link">
+                    <i className="nav-icon fas fa-wrench" />
+                    <p>Helpdesk</p>
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/report/allreport" className="nav-link">
+                    <i className="nav-icon fas fa-chart-pie" />
+                    <p>Report</p>
                   </Link>
                 </li>
                 {/* <li className="nav-item has-treeview">
@@ -76,7 +94,7 @@ export default class Sidebar extends Component {
                     </li>
                   </ul>
                 </li> */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/blank" className="nav-link">
                     <i className="nav-icon fas fa-th" />
                     <p>
@@ -84,7 +102,7 @@ export default class Sidebar extends Component {
                       <span className="right badge badge-danger">New</span>
                     </p>
                   </Link>
-                </li>
+                </li> */}
                 {/* <li className="nav-item">
                   <Link to="/boards/list" className="nav-link">
                     <i className="nav-icon fas fa-comments"></i>

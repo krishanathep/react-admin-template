@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Home() {
+export default function AllReport() {
   return (
     <>
       <div className="content-wrapper">
@@ -8,11 +9,14 @@ export default function Home() {
           <div className="container-fluid">
             <div className="row mb-2">
               <div className="col-sm-6">
-                <h1>Home</h1>
+                <h1>All Report</h1>
               </div>
               <div className="col-sm-6">
                 <ol className="breadcrumb float-sm-right">
-                  <li className="breadcrumb-item active">Home</li>
+                  <li className="breadcrumb-item">
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li className="breadcrumb-item active">Report</li>
                 </ol>
               </div>
             </div>
@@ -23,7 +27,7 @@ export default function Home() {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Home</h3>
+                  <h3 className="card-title">Report</h3>
                   <div className="card-tools">
                     <button
                       type="button"

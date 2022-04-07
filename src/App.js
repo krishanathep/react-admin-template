@@ -21,18 +21,25 @@ import StudentCreate from "./pages/students/StudentCreate";
 import StudentEdit from "./pages/students/StudentEdit";
 import StudentView from "./pages/students/StudentView";
 
+import HelpdeskList from './pages/helpdesk/List'
+
+import ProfilesList from './pages/profiles/List'
+
 import SignIn from "./pages/login/SignIn";
+import SignUp from './pages/login/SiginUp'
+import AllReport from "./pages/report/AllReport";
 
 function App() {
   return (
     <div className="wrapper">
       <Router>
-        {window.location.pathname !== '/signin' && <Navbar/>}
-        {window.location.pathname !== '/signin' && <Sidebar/>}
+        {window.location.pathname !== '/' && <Navbar/>}
+        {window.location.pathname !== '/' && <Sidebar/>}
         <Routes>
           
-          <Route path="/signin" element={<SignIn />} />
-          <Route exact path="/" element={<Home />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route exact path="/home" element={<Home />} />
           <Route path="/blank" element={<Blank />} />
           <Route path="/students" element={<StudentLlist />} />
           <Route path="/student-create" element={<StudentCreate />} />
@@ -45,8 +52,11 @@ function App() {
           <Route path="/boards/show/:id" element={<Show />} />
           <Route path="/boards/edit/:id" element={<Edit />} />
           <Route path="/boards/list" element={<Board />} />
+          <Route path="/helpdesk/list" element={<HelpdeskList />} />
+          <Route path="/profiles/list" element={<ProfilesList />} />
+          <Route path="/report/allreport" element={<AllReport/>} />
         </Routes>
-        {window.location.pathname !== '/signin' && <Footer/>}
+        {window.location.pathname !== '/' && <Footer/>}
       </Router>
     </div>
   );
