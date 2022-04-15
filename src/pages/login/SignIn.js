@@ -9,22 +9,31 @@ export default function SignIn() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-      
-    if(email === ''){
-      alert('Email Field is Not Empty!')
-    }else 
-    if(password === ''){
-      alert('Password Field is Not Empty!')
-    }else
-    if(email !== 'krishanathep@gmail.com'){
-      alert('Email ไม่ถูกต้อง')
-    }else 
-    if(password !== 'jareanpong01'){
-      alert('Password ไม่ถูกต้อง')
-    }else {
-      history('/home')
-      window.location.reload();
+     
+    const data = {
+      email,
+      password,
     }
+
+    const resuestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }
+
+    await fetch('http://127.0.0.1:8000/api/auth/login', resuestOptions)
+      .then((res)=>res.json())
+      .then((res)=>{
+        if('access_token' in res){
+          alert('ยินดีต้อนรับ')
+          localStorage.setItem('access_token', res['access_token'])
+          localStorage.setItem('user', JSON.stringify(res['user']))
+          history("/home");
+          window.location.reload();
+        }else {
+          alert('ข้อมูลไม่ถูกต้อง')
+        }
+      })
   }
 
   return (

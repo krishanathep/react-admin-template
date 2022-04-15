@@ -22,6 +22,9 @@ import StudentEdit from "./pages/students/StudentEdit";
 import StudentView from "./pages/students/StudentView";
 
 import HelpdeskList from './pages/helpdesk/List'
+import HelpdeskCreate from './pages/helpdesk/Create'
+import HelpdeskView from './pages/helpdesk/View'
+import HelpdeskEdit from './pages/helpdesk/Edit'
 
 import ProfilesList from './pages/profiles/List'
 
@@ -52,7 +55,12 @@ function App() {
           <Route path="/boards/show/:id" element={<Show />} />
           <Route path="/boards/edit/:id" element={<Edit />} />
           <Route path="/boards/list" element={<Board />} />
+          
           <Route path="/helpdesk/list" element={<HelpdeskList />} />
+          <Route path="/helpdesk/create" element={<HelpdeskCreate />} />
+          <Route path="/helpdesk/view/:id" element={<HelpdeskView />} />
+          <Route path="/helpdesk/edit/:id" element={<HelpdeskEdit />} />
+
           <Route path="/profiles/list" element={<ProfilesList />} />
           <Route path="/report/allreport" element={<AllReport/>} />
         </Routes>

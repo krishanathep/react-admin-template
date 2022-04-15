@@ -1,8 +1,18 @@
 import React, { Component } from "react";
-import { NavLink as Link } from "react-router-dom";
+import { NavLink as Link} from "react-router-dom";
 
 export default class Sidebar extends Component {
   render() {
+   
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    function signOut() {
+      window.confirm('Are your sure you want to Signout?')
+      localStorage.removeItem('access_token')
+      localStorage.removeItem('user')
+      window.location.href = "/"
+    }
+
     return (
       <div>
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -28,7 +38,7 @@ export default class Sidebar extends Component {
               </div>
               <div className="info">
                 <Link to="#" className="d-block">
-                  Alexander Pierce
+                  {user.name}
                 </Link>
               </div>
             </div>
@@ -52,22 +62,22 @@ export default class Sidebar extends Component {
                   </Link>
                 </li> */}
                 <li className="nav-item">
-                  <Link to="/profiles/list" className="nav-link">
-                    <i className="nav-icon fa fa-address-card" />
-                    <p>Profiles</p>
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link to="/helpdesk/list" className="nav-link">
                     <i className="nav-icon fas fa-wrench" />
                     <p>Helpdesk</p>
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/report/allreport" className="nav-link">
-                    <i className="nav-icon fas fa-chart-pie" />
-                    <p>Report</p>
+                {/* <li className="nav-item">
+                  <Link to="/profiles/list" className="nav-link">
+                    <i className="nav-icon fa fa-address-card" />
+                    <p>Profile</p>
                   </Link>
+                </li> */}
+                <li className="nav-item">
+                  <a href="#" className="nav-link" onClick={signOut}>
+                    <i className="nav-icon fa fa-user" />
+                    <p>Sign out</p>
+                  </a>
                 </li>
                 {/* <li className="nav-item has-treeview">
                   <Link to="javascript:;" className="nav-link">

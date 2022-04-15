@@ -1,7 +1,47 @@
-import React from "react";
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SiginUp() {
+  // const history = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    // if(name === ''){
+    //   alert('กรุณากรอกข้อมูลให้ถูกต้อง')
+    // }else if(email === ''){
+    //   alert('กรุณากรอกข้อมูลให้ถูกต้อง')
+    // }else if(password === ''){
+    //   alert('กรุณากรอกข้อมูลให้ถูกต้อง')
+    // }
+
+    const data = {
+      name,
+      email,
+      password,
+    };
+
+    const resuestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    await fetch("http://127.0.0.1:8000/api/auth/register", resuestOptions)
+      .then((res) => res.json())
+      .then((res) => {
+        if(res.status === 200){
+          alert('สมัครสมาชิกเรียบร้อยแล้ว'+ res.status)
+          window.location.href = "/"
+        }else{
+          alert('ข้อมูลไม่ถูกต้อง')
+        }
+      });
+  }
+
   return (
     <div class="hold-transition register-page">
       <div class="register-box">
@@ -13,12 +53,14 @@ export default function SiginUp() {
         <div class="card">
           <div class="card-body register-card-body">
             <p class="login-box-msg">Register a new membership</p>
-            <form action="../../index.html" method="post">
+            <form onSubmit={handleSubmit}>
               <div class="input-group mb-3">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Full name"
+                  value={name}
+                  onChange={(event)=>setName(event.target.value)}
                 />
                 <div class="input-group-append">
                   <div class="input-group-text">
@@ -27,7 +69,10 @@ export default function SiginUp() {
                 </div>
               </div>
               <div class="input-group mb-3">
-                <input type="email" class="form-control" placeholder="Email" />
+                <input type="email" class="form-control" placeholder="Email" 
+                  value={email}
+                  onChange={(event)=>setEmail(event.target.value)}
+                />
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-envelope"></span>
@@ -39,6 +84,8 @@ export default function SiginUp() {
                   type="password"
                   class="form-control"
                   placeholder="Password"
+                  value={password}
+                  onChange={(event)=>setPassword(event.target.value)}
                 />
                 <div class="input-group-append">
                   <div class="input-group-text">
@@ -46,7 +93,7 @@ export default function SiginUp() {
                   </div>
                 </div>
               </div>
-              <div class="input-group mb-3">
+              {/* <div class="input-group mb-3">
                 <input
                   type="password"
                   class="form-control"
@@ -57,7 +104,7 @@ export default function SiginUp() {
                     <span class="fas fa-lock"></span>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div class="row">
                 <div class="col-8">
                   <div class="icheck-primary">
@@ -91,7 +138,7 @@ export default function SiginUp() {
                 Sign up using Google+
               </a>
             </div> */}
-            <Link to='/' class="text-center">
+            <Link to="/" class="text-center">
               I already have a membership
             </Link>
           </div>
