@@ -31,7 +31,7 @@ export default class Sidebar extends Component {
             <div className="user-panel mt-3 pb-3 mb-3 d-flex">
               <div className="image">
                 <img
-                  src={process.env.PUBLIC_URL+"/assets/dist/img/user2-160x160.jpg"}
+                  src={process.env.PUBLIC_URL+"/assets/dist/img/profile.png"}
                   className="img-circle elevation-2"
                   alt=""
                 />
@@ -63,19 +63,19 @@ export default class Sidebar extends Component {
                 </li> */}
                 <li className="nav-item">
                   <Link to="/helpdesk/list" className="nav-link">
-                    <i className="nav-icon fas fa-wrench" />
+                    <i class="nav-icon fas fa-tools" />
                     <p>Helpdesk</p>
                   </Link>
                 </li>
-                {/* <li className="nav-item">
+                <li className="nav-item">
                   <Link to="/profiles/list" className="nav-link">
                     <i className="nav-icon fa fa-address-card" />
                     <p>Profile</p>
                   </Link>
-                </li> */}
+                </li>
                 <li className="nav-item">
                   <a href="#" className="nav-link" onClick={signOut}>
-                    <i className="nav-icon fa fa-user" />
+                    <i className="nav-icon fas fa-sign-out-alt" />
                     <p>Sign out</p>
                   </a>
                 </li>

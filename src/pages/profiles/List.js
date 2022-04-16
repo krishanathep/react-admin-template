@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
+import "moment-timezone";
 
 export default function Profiles_List() {
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <>
       <div className="content-wrapper">
@@ -27,7 +30,7 @@ export default function Profiles_List() {
             <div className="col-md-12">
               <div className="card">
                 <div className="card-header">
-                  <h3 className="card-title">Profiles List</h3>
+                  <h3 className="card-title">My Profile</h3>
                   <div className="card-tools">
                     <button
                       type="button"
@@ -48,9 +51,41 @@ export default function Profiles_List() {
                   </div>
                 </div>
                 <div className="card-body">
-                  Profiles List
+                  <table className="table table-bordered">
+                    <tr>
+                      <td>Picture</td>
+                      <td>
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/assets/dist/img/profile.png"
+                          }
+                          height='100'
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td>{user.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{user.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Created</td>
+                      <td>
+                        <Moment format="DD/MM/YYYY">{user.created_at}</Moment>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Updated</td>
+                      <td>
+                        <Moment format="DD/MM/YYYY">{user.updated_at}</Moment>
+                      </td>
+                    </tr>
+                  </table>
                 </div>
-                <div className="card-footer">Footer</div>
               </div>
             </div>
           </div>
